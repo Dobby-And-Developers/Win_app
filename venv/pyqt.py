@@ -5,127 +5,42 @@ import random as r
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+from PyQt5 import uic
+main_class = uic.loadUiType('main.ui')[0]
+login_class = uic.loadUiType('login.ui')[0]
+signup_class = uic.loadUiType('signup.ui')[0]
 
 
-class SignInDialog(QDialog):
+class SignInDialog(QDialog, login_class):
     def __init__(self):
         super().__init__()
-        self.setup_ui()
+        self.setupUi(self)
 
         self.id = None
         self.password = None
 
-    def setup_ui(self):
-        self.setGeometry(1100, 200, 300, 100)
-        self.setWindowTitle("로그인")
-        self.setWindowIcon(QIcon('icon.jpg'))
-        palette = QPalette()
-        palette.setBrush(QPalette.Background, QBrush(QPixmap("login.jpg")))
-        self.setPalette(palette)
-
-        label1 = QLabel("아이디 : ")
-        label2 = QLabel("비밀번호 : ")
-
-        self.lineEdit1 = QLineEdit()
-        self.lineEdit2 = QLineEdit()
-        self.lineEdit2.setEchoMode(QLineEdit.Password)
-        self.pushButton1= QPushButton("로그인")
-        self.pushButton1.clicked.connect(self.push_button_clicked)
-
-        layout = QGridLayout()
-        layout.addWidget(label1, 0, 0)
-        layout.addWidget(self.lineEdit1, 0, 1)
-        layout.addWidget(self.pushButton1, 0, 2)
-        layout.addWidget(label2, 1, 0)
-        layout.addWidget(self.lineEdit2, 1, 1)
-
-        self.setLayout(layout)
-
     def push_button_clicked(self):
-        self.id = self.lineEdit1.text()
-        self.password = self.lineEdit2.text()
+        self.id = self.lineEdit_2.text()
+        self.password = self.lineEdit_3.text()
         self.close()
 
 
-class SignUpDialog(QDialog):
+class SignUpDialog(QDialog, signup_class):
     def __init__(self):
         super().__init__()
-        self.setup_ui()
-
-        self.name = None
-        self.email = None
-        self.id = None
-        self.password = None
-        self.number = None
-        self._number = None
-
-    def setup_ui(self):
-        self.setGeometry(1100, 200, 300, 100)
-        self.setWindowTitle("회원가입")
-        self.setWindowIcon(QIcon('icon.jpg'))
-        palette = QPalette()
-        palette.setBrush(QPalette.Background, QBrush(QPixmap("login.jpg")))
-        self.setPalette(palette)
-
-        label1 = QLabel("이  름 : ")
-        label2 = QLabel("이메일 : ")
-        label3 = QLabel("인증번호 :")
-        label4 = QLabel("아이디 : ")
-        label5 = QLabel("비밀번호 : ")
-
-        self.lineEdit1 = QLineEdit()
-        self.lineEdit2 = QLineEdit()
-        self.lineEdit3 = QLineEdit()
-        self.lineEdit4 = QLineEdit()
-        self.lineEdit5 = QLineEdit()
-        self.lineEdit5.setEchoMode(QLineEdit.Password)
-
-        self.pushButton1 = QPushButton("중복확인")
-        self.pushButton2 = QPushButton("회원가입")
-        self.pushButton3 = QPushButton("메일인증")
-        self.pushButton4 = QPushButton("확인")
-
-        self.pushButton1.clicked.connect(self.checking_id)
-        self.pushButton2.clicked.connect(self.push_button_clicked)
-        self.pushButton3.clicked.connect(self.checking_mail)
-        self.pushButton4.clicked.connect(self.checked_num)
-
-        layout = QGridLayout()
-        layout.addWidget(label1, 0, 0)
-        layout.addWidget(self.lineEdit1, 0, 1)
-        layout.addWidget(label2, 1, 0)
-        layout.addWidget(self.lineEdit2, 1, 1)
-        layout.addWidget(self.pushButton3, 1, 2)
-        layout.addWidget(label3, 2, 0)
-        layout.addWidget(self.lineEdit3, 2, 1)
-        layout.addWidget(self.pushButton4, 2, 2)
-        layout.addWidget(label4, 3, 0)
-        layout.addWidget(self.lineEdit4, 3, 1)
-        layout.addWidget(self.pushButton1, 3, 2)
-        layout.addWidget(label5, 4, 0)
-        layout.addWidget(self.lineEdit5, 4, 1)
-        layout.addWidget(self.pushButton2, 5, 2)
-
-        self.setLayout(layout)
-
-    def checked_num(self):
-        self.number = self.lineEdit3.text()
-        if self.number == self._number:
-            print(self.number)
-
-        else:
-            print('Wrong Num')
+        self.setupUi(self)
 
     def checking_mail(self):
-        self.email = self.lineEdit2.text()
+        self.email = self.lineEdit_2.text()
         print(self.email)
         TO = self.email
         SUBJECT = 'DSM Owl Email Check number.'
         TEXT = str(r.randint(100000, 999999))
+        # TEXT = str(123456)
         self._number = TEXT
 
         gmail_sender = 'manitto719@gmail.com'
-        gmail_passwd = ''
+        gmail_passwd = 'rhrudxo2004*'
 
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.ehlo()
@@ -142,70 +57,73 @@ class SignUpDialog(QDialog):
 
         except:
             print('error sending mail')
+            self.label.setText('이메일주소를 확인해주세요.')
+
+        else:
+            self.lineEdit.setDisabled(True)
+            self.lineEdit_2.setDisabled(True)
+            self.pushButton.setDisabled(True)
+            self.lineEdit_3.setDisabled(False)
+            self.pushButton_2.setDisabled(False)
 
         server.quit()
 
+    def checking_num(self):
+        self.number = self.lineEdit_3.text()
+        if self.number == self._number:
+            print(self.number)
+            self.lineEdit_3.setDisabled(True)
+            self.pushButton_2.setDisabled(True)
+            self.lineEdit_4.setDisabled(False)
+            self.pushButton_3.setDisabled(False)
+
+        else:
+            print('Wrong Num')
+            self.label.setText('인증번호가 잘못되었습니다.')
+
+
     def checking_id(self):
-        self.id = self.lineEdit4.text()
+        self.id = self.lineEdit_4.text()
         print(self.id)
-        # self.close()
-        # self.id = self.lineEdit1.text()
+        self.lineEdit_4.setDisabled(True)
+        self.pushButton_3.setDisabled(True)
+        self.lineEdit_5.setDisabled(False)
+        self.lineEdit_6.setDisabled(False)
+        self.pushButton_4.setDisabled(False)
+        self.pushButton_5.setDisabled(False)
 
-    def push_button_clicked(self):
+    def checking_pw(self):
+        self.password = self.lineEdit_5.text()
+        self._password = self.lineEdit_6.text()
+        if self.password == self._password:
+            self.lineEdit_5.setDisabled(True)
+            self.lineEdit_6.setDisabled(True)
+            self.pushButton_4.setDisabled(True)
 
-        self.name = self.lineEdit1.text()
-        self.email = self.lineEdit2.text()
-        self.id = self.lineEdit4.text()
-        self.password = self.lineEdit5.text()
-        conn = pymysql.connect(host='localhost', user='root', password='',
-                               db='user_info', charset='utf8')
+        else:
+            print('check your pw')
 
-        curs = conn.cursor()
-        sql = """insert into user(name, email, id, pw) values (%s, %s, %s, %s)"""
-        curs.execute(sql, (f'{self.name}', f'{self.email}', f'{self.id}', f'{self.password}'))
-        conn.commit()
+    def signup(self):
+        self.pushButton_5.setDisabled(True)
+        print('회원가입성공')
 
-        conn.close()
-
+        self.name = self.lineEdit.text()
+        self.email = self.lineEdit_2.text()
+        self.id = self.lineEdit_4.text()
+        self.password = self.lineEdit_5.text()
         self.close()
 
 
-class MyWindow(QWidget):
+class MyWindow(QWidget, main_class):
     def __init__(self):
         super().__init__()
-        # self.date = QDate.currentDate()
-        self.setup_ui()
-
-    def setup_ui(self):
-        self.setGeometry(800, 200, 960, 540)
-        self.setWindowTitle("Our Weed Life")
-        self.setWindowIcon(QIcon('icon.jpg'))
-        # self.statusBar().showMessage(self.date.toString(Qt.DefaultLocaleLongDate))
-
-        # test background
-        palette = QPalette()
-        palette.setBrush(QPalette.Background, QBrush(QPixmap("background.jpg")))
-        self.setPalette(palette)
-        self.pushButton1 = QPushButton("Sign In")
-        self.pushButton2 = QPushButton("Sign Up")
-        self.pushButton1.clicked.connect(self.push_button_clicked1)
-        self.pushButton2.clicked.connect(self.push_button_clicked2)
-
-        layout = QHBoxLayout()
-        layout.addStretch(11)
-        layout.addWidget(self.pushButton1)
-        layout.addWidget(self.pushButton2)
-
-        _layout = QVBoxLayout()
-        _layout.addStretch(1)
-        _layout.addLayout(layout)
-        _layout.addStretch(4)
-
-        self.setLayout(_layout)
+        self.setupUi(self)
 
     def push_button_clicked1(self):
+        self.hide()
         dlg1 = SignInDialog()
         dlg1.exec_()
+        self.show()
         _id = dlg1.id
         _pw = dlg1.password
         print(f"id : {_id} pw : {_pw}")
@@ -221,7 +139,8 @@ class MyWindow(QWidget):
 
 
 if __name__ == "__main__":
+    import sys
     app = QApplication(sys.argv)
-    window = MyWindow()
-    window.show()
+    my_window = MyWindow()
+    my_window.show()
     app.exec_()
