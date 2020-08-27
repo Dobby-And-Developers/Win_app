@@ -40,8 +40,8 @@ class SignUpDialog(QDialog, signup_class):
         # TEXT = str(123456)
         self._number = TEXT
 
-        gmail_sender = 'manitto719@gmail.com'
-        gmail_passwd = 'rhrudxo2004*'
+        gmail_sender = ''
+        gmail_passwd = ''
 
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.ehlo()
