@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_signup(object):
     def setupUi(self, signup):
         signup.setObjectName("signup")
-        signup.resize(960, 538)
+        signup.resize(960, 540)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         signup.setWindowIcon(icon)
@@ -113,11 +113,6 @@ class Ui_signup(object):
         self.lineEdit_6.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_6.setObjectName("lineEdit_6")
         self.back.raise_()
-        self.label_1.raise_()
-        self.label_2.raise_()
-        self.label_3.raise_()
-        self.label_4.raise_()
-        self.label_5.raise_()
         self.lineEdit.raise_()
         self.lineEdit_2.raise_()
         self.lineEdit_3.raise_()

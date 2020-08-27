@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_Main(object):
     def setupUi(self, Main):
         Main.setObjectName("Main")
@@ -32,27 +33,43 @@ class Ui_Main(object):
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
+        self.label_2 = QtWidgets.QLabel(self.tab)
+        self.label_2.setGeometry(QtCore.QRect(0, 0, 721, 331))
+        font = QtGui.QFont()
+        font.setFamily("한컴 고딕")
+        font.setPointSize(14)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.tab_2)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(-1, -1, 1199, 542))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 731, 341))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.listView_1 = QtWidgets.QListView(self.horizontalLayoutWidget)
-        self.listView_1.setObjectName("listView_1")
-        self.horizontalLayout.addWidget(self.listView_1)
-        self.listView_2 = QtWidgets.QListView(self.horizontalLayoutWidget)
-        self.listView_2.setObjectName("listView_2")
-        self.horizontalLayout.addWidget(self.listView_2)
-        self.listView_3 = QtWidgets.QListView(self.horizontalLayoutWidget)
-        self.listView_3.setObjectName("listView_3")
-        self.horizontalLayout.addWidget(self.listView_3)
+        self.label_3 = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_3.setObjectName("label_3")
+
+        self.horizontalLayout.addWidget(self.label_3)
+
+        self.label_4 = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName("label_4")
+
+        self.horizontalLayout.addWidget(self.label_4)
+
+        self.label_5 = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        self.label_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_5.setObjectName("label_5")
+
+        self.horizontalLayout.addWidget(self.label_5)
+
         self.tabWidget.addTab(self.tab_2, "")
         self.label = QtWidgets.QLabel(Main)
-        self.label.setGeometry(QtCore.QRect(0, 0, 960, 540))
+        self.label.setGeometry(QtCore.QRect(0, 0, 1197, 540))
         self.label.setAutoFillBackground(False)
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap("background.jpg"))
@@ -63,7 +80,7 @@ class Ui_Main(object):
         self.tabWidget.raise_()
 
         self.retranslateUi(Main)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.signin.clicked.connect(Main.push_button_clicked1)
         self.signup.clicked.connect(Main.push_button_clicked2)
         QtCore.QMetaObject.connectSlotsByName(Main)
@@ -73,7 +90,11 @@ class Ui_Main(object):
         Main.setWindowTitle(_translate("Main", "DSM-Owl"))
         self.signin.setText(_translate("Main", "로그인"))
         self.signup.setText(_translate("Main", "회원가입"))
+        self.label_2.setText(_translate("Main", "공지"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Main", "공지사항"))
+        self.label_3.setText(_translate("Main", "TextLabel"))
+        self.label_4.setText(_translate("Main", "TextLabel"))
+        self.label_5.setText(_translate("Main", "TextLabel"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Main", "오늘의 급식"))
 
 

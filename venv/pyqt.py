@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
+
 main_class = uic.loadUiType('main.ui')[0]
 login_class = uic.loadUiType('login.ui')[0]
 signup_class = uic.loadUiType('signup.ui')[0]
@@ -39,8 +40,8 @@ class SignUpDialog(QDialog, signup_class):
         # TEXT = str(123456)
         self._number = TEXT
 
-        gmail_sender = ''
-        gmail_passwd = ''
+        gmail_sender = 'manitto719@gmail.com'
+        gmail_passwd = 'rhrudxo2004*'
 
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.ehlo()
