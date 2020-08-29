@@ -8,7 +8,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_Main(object):
     def setupUi(self, Main):
         Main.setObjectName("Main")
@@ -29,7 +28,7 @@ class Ui_Main(object):
         self.signup.setAutoDefault(True)
         self.signup.setObjectName("signup")
         self.tabWidget = QtWidgets.QTabWidget(Main)
-        self.tabWidget.setGeometry(QtCore.QRect(30, 110, 731, 361))
+        self.tabWidget.setGeometry(QtCore.QRect(30, 110, 737, 366))
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
@@ -50,23 +49,32 @@ class Ui_Main(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label_3 = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("한컴 고딕")
+        font.setPointSize(18)
+        self.label_3.setFont(font)
+        self.label_3.setFrameShape(QtWidgets.QFrame.WinPanel)
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
-
         self.horizontalLayout.addWidget(self.label_3)
-
         self.label_4 = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("한컴 고딕")
+        font.setPointSize(18)
+        self.label_4.setFont(font)
+        self.label_4.setFrameShape(QtWidgets.QFrame.WinPanel)
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
-
         self.horizontalLayout.addWidget(self.label_4)
-
         self.label_5 = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("한컴 고딕")
+        font.setPointSize(18)
+        self.label_5.setFont(font)
+        self.label_5.setFrameShape(QtWidgets.QFrame.WinPanel)
         self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName("label_5")
-
         self.horizontalLayout.addWidget(self.label_5)
-
         self.tabWidget.addTab(self.tab_2, "")
         self.label = QtWidgets.QLabel(Main)
         self.label.setGeometry(QtCore.QRect(0, 0, 1197, 540))
@@ -80,7 +88,7 @@ class Ui_Main(object):
         self.tabWidget.raise_()
 
         self.retranslateUi(Main)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.signin.clicked.connect(Main.push_button_clicked1)
         self.signup.clicked.connect(Main.push_button_clicked2)
         QtCore.QMetaObject.connectSlotsByName(Main)

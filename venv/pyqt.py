@@ -1,4 +1,6 @@
 import sys
+import datetime
+import requests
 import smtplib
 import pymysql
 import random as r
@@ -6,10 +8,48 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
+from bs4 import BeautifulSoup
+from ast import literal_eval
 
 main_class = uic.loadUiType('main.ui')[0]
 login_class = uic.loadUiType('login.ui')[0]
 signup_class = uic.loadUiType('signup.ui')[0]
+main_id_class = uic.loadUiType('main_id.ui')[0]
+
+
+class AfterLogin(QDialog, main_id_class):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        now = datetime.datetime.now()
+        date = now.strftime('%Y-%m-%d')
+        # date = '2020-08-19'
+
+        url = f'https://api.dsm-dms.com/meal/{date}'
+        html = requests.get(url).text
+
+        # soup = BeautifulSoup(html, 'html.parser')
+        meal = literal_eval(html)
+        breakfast_dic = meal[date]['breakfast']
+        lunch_dic = meal[date]['lunch']
+        dinner_dic = meal[date]['dinner']
+
+        breakfast = str(breakfast_dic)
+        breakfast = breakfast.translate({ord('['): '', ord(']'): '', ord("'"): '', ord(','): '\n'})
+        lunch = str(lunch_dic)
+        lunch = lunch.translate({ord('['): '', ord(']'): '', ord("'"): '', ord(','): '\n'})
+        dinner = str(dinner_dic)
+        dinner = dinner.translate({ord('['): '', ord(']'): '', ord("'"): '', ord(','): '\n'})
+
+        self.label_3.setText(breakfast)
+        self.label_4.setText(lunch)
+        self.label_5.setText(dinner)
+
+    def logout(self):
+        self.close()
+        dlg4 = MyWindow()
+        dlg4.exec_()
 
 
 class SignInDialog(QDialog, login_class):
@@ -24,6 +64,9 @@ class SignInDialog(QDialog, login_class):
         self.id = self.lineEdit_2.text()
         self.password = self.lineEdit_3.text()
         self.close()
+        dlg3 = AfterLogin()
+        dlg3.exec_()
+        self.dlg3.label_6.setText(self.id.text)
 
 
 class SignUpDialog(QDialog, signup_class):
@@ -113,23 +156,49 @@ class SignUpDialog(QDialog, signup_class):
         self.id = self.lineEdit_4.text()
         self.password = self.lineEdit_5.text()
         self.close()
+        dlg3 = AfterLogin()
+        dlg3.exec_()
 
 
-class MyWindow(QWidget, main_class):
+class MyWindow(QDialog, main_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
 
+        now = datetime.datetime.now()
+        date = now.strftime('%Y-%m-%d')
+        # date = '2020-08-19'
+
+        url = f'https://api.dsm-dms.com/meal/{date}'
+        html = requests.get(url).text
+
+        # soup = BeautifulSoup(html, 'html.parser')
+        meal = literal_eval(html)
+        breakfast_dic = meal[date]['breakfast']
+        lunch_dic = meal[date]['lunch']
+        dinner_dic = meal[date]['dinner']
+
+        breakfast = str(breakfast_dic)
+        breakfast = breakfast.translate({ord('['): '', ord(']'): '', ord("'"): '', ord(','): '\n'})
+        lunch = str(lunch_dic)
+        lunch = lunch.translate({ord('['): '', ord(']'): '', ord("'"): '', ord(','): '\n'})
+        dinner = str(dinner_dic)
+        dinner = dinner.translate({ord('['): '', ord(']'): '', ord("'"): '', ord(','): '\n'})
+
+        self.label_3.setText(breakfast)
+        self.label_4.setText(lunch)
+        self.label_5.setText(dinner)
+
     def push_button_clicked1(self):
-        self.hide()
+        self.close()
         dlg1 = SignInDialog()
         dlg1.exec_()
-        self.show()
         _id = dlg1.id
         _pw = dlg1.password
         print(f"id : {_id} pw : {_pw}")
 
     def push_button_clicked2(self):
+        self.close()
         dlg2 = SignUpDialog()
         dlg2.exec_()
         _name = dlg2.name

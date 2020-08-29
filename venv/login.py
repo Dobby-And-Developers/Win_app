@@ -33,12 +33,14 @@ class Ui_Dialog(object):
         font.setFamily("한컴 고딕")
         font.setPointSize(20)
         self.label_3.setFont(font)
+        self.label_3.setFocusPolicy(QtCore.Qt.NoFocus)
         self.label_3.setObjectName("label_3")
         self.lineEdit_2 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_2.setGeometry(QtCore.QRect(320, 230, 221, 20))
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.lineEdit_3 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_3.setGeometry(QtCore.QRect(320, 280, 221, 20))
+        self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.login = QtWidgets.QPushButton(Dialog)
         self.login.setGeometry(QtCore.QRect(560, 280, 75, 23))
@@ -52,7 +54,7 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "로그인"))
         self.label_2.setText(_translate("Dialog", "아이디"))
-        self.label_3.setText(_translate("Dialog", "회원가입"))
+        self.label_3.setText(_translate("Dialog", "비밀번호"))
         self.login.setText(_translate("Dialog", "로그인"))
 
 
