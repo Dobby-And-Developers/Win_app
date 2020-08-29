@@ -80,7 +80,6 @@ class SignUpDialog(QDialog, signup_class):
         TO = self.email
         SUBJECT = 'DSM Owl Email Check number.'
         TEXT = str(r.randint(100000, 999999))
-        # TEXT = str(123456)
         self._number = TEXT
 
         gmail_sender = ''

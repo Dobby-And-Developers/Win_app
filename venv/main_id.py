@@ -15,6 +15,7 @@ class Ui_Dialog(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Dialog.setWindowIcon(icon)
+
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(0, 0, 960, 540))
         self.label.setText("")
@@ -23,8 +24,10 @@ class Ui_Dialog(object):
         self.tabWidget = QtWidgets.QTabWidget(Dialog)
         self.tabWidget.setGeometry(QtCore.QRect(30, 110, 737, 366))
         self.tabWidget.setFocusPolicy(QtCore.Qt.TabFocus)
+
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
+
         self.tab.setObjectName("tab")
         self.calendarWidget = QtWidgets.QCalendarWidget(self.tab)
         self.calendarWidget.setGeometry(QtCore.QRect(311, 10, 411, 321))
@@ -90,6 +93,7 @@ class Ui_Dialog(object):
         self.layoutWidget.raise_()
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
+
         self.tab_2.setObjectName("tab_2")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.tab_2)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 731, 341))

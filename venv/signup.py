@@ -15,6 +15,7 @@ class Ui_signup(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         signup.setWindowIcon(icon)
+
         self.label_1 = QtWidgets.QLabel(signup)
         self.label_1.setGeometry(QtCore.QRect(120, 130, 141, 35))
         font = QtGui.QFont()
@@ -50,6 +51,7 @@ class Ui_signup(object):
         font.setPointSize(20)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
+
         self.lineEdit = QtWidgets.QLineEdit(signup)
         self.lineEdit.setGeometry(QtCore.QRect(281, 142, 150, 20))
         self.lineEdit.setObjectName("lineEdit")
@@ -70,6 +72,7 @@ class Ui_signup(object):
         self.lineEdit_5.setMaxLength(20)
         self.lineEdit_5.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_5.setObjectName("lineEdit_5")
+
         self.pushButton = QtWidgets.QPushButton(signup)
         self.pushButton.setGeometry(QtCore.QRect(460, 190, 75, 23))
         self.pushButton.setObjectName("pushButton")

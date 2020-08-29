@@ -29,8 +29,10 @@ class Ui_Main(object):
         self.signup.setObjectName("signup")
         self.tabWidget = QtWidgets.QTabWidget(Main)
         self.tabWidget.setGeometry(QtCore.QRect(30, 110, 737, 366))
+
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
+
         self.tab.setObjectName("tab")
         self.label_2 = QtWidgets.QLabel(self.tab)
         self.label_2.setGeometry(QtCore.QRect(0, 0, 721, 331))
@@ -41,6 +43,7 @@ class Ui_Main(object):
         self.label_2.setObjectName("label_2")
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
+
         self.tab_2.setObjectName("tab_2")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.tab_2)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 731, 341))

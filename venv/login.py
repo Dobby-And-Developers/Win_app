@@ -35,6 +35,7 @@ class Ui_Dialog(object):
         self.label_3.setFont(font)
         self.label_3.setFocusPolicy(QtCore.Qt.NoFocus)
         self.label_3.setObjectName("label_3")
+
         self.lineEdit_2 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_2.setGeometry(QtCore.QRect(320, 230, 221, 20))
         self.lineEdit_2.setObjectName("lineEdit_2")
@@ -42,6 +43,7 @@ class Ui_Dialog(object):
         self.lineEdit_3.setGeometry(QtCore.QRect(320, 280, 221, 20))
         self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_3.setObjectName("lineEdit_3")
+
         self.login = QtWidgets.QPushButton(Dialog)
         self.login.setGeometry(QtCore.QRect(560, 280, 75, 23))
         self.login.setObjectName("login")
